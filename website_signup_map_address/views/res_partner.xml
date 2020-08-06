@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <!--res.partner Inherit Form View to Modify it -->
+       <record id="res_partner_inherit_form_view" model="ir.ui.view">
+           <field name="name">res.partner.inherit.form.view</field>
+           <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//field[@name='vat']" position="before">
+                   <field name="lat"/>
+                   <field name="lng"/>
+               </xpath>
+               <xpath expr="/form/*" position="before">
+                    <header>
+                        <button name="location_redirect_map" string="Open Location in Map" type="object" class="btn btn-primary" />
+                    </header>
+               </xpath>
+           </field>
+       </record>
+
+    </data>
+</odoo>
